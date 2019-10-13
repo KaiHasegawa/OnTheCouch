@@ -62,3 +62,20 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
+gem 'acts-as-taggable-on', '~> 6.0'
+
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+gem 'kaminari', '~> 0.17.0'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
+
+
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'momentjs-rails', '>= 2.9.0'
+
+gem 'rails_admin', '~> 1.3'
+gem 'cancancan', '~> 2.0'

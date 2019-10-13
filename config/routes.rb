@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+
+  devise_for :admin_users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+
   devise_for :end_users, controllers: {
   unlocks: 'end_users/unlocks',
   omniauth: 'end_users/omniauth',
@@ -7,17 +13,22 @@ Rails.application.routes.draw do
   confirmations: 'end_users/confirmations',
   sessions: 'end_users/sessions',
   }
-  devise_for :admins, controllers: {
-  unlocks: 'admins/unlocks',
-  omniauth: 'admins/omniauth',
-  registrations: 'admins/registrations',
-  passwords: 'admins/passwords',
-  confirmations: 'admins/confirmations',
-  sessions: 'admins/sessions',
-  }
 
-  resources :admins
+  get 'tags/:tag', to: 'items#index', as: :tag  
   resources :end_users
-  
+
+
+  resources :end_users
+  resources :items
+  resources :events
+  resources :entries
+
+
+  resources :relationships, only: [:create, :destroy]
+
+  resources :entries, only: [:create, :destroy]
+
+  root to: 'items#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

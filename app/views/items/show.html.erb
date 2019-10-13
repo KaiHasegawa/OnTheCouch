@@ -1,0 +1,22 @@
+
+
+<%= attachment_image_tag @item, :image, :fill, 400, 500 %>
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @item.release_date %>
+</p>
+<p>監督名: <%= raw(@item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+<p>出演者: <%= raw(@item.actor_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+<p>ジャンル: <%= raw(@item.genre_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+  <p><%= @item.item_description %></p>
+
+
+
+  
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

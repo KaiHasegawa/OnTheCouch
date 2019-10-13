@@ -1,0 +1,39 @@
+<div class="row">
+
+  <aside class="col-xs-4">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+
+        <h3 class="panel-title"><%= @end_user.name %></h3>
+
+      </div>
+
+      <div class="panel-body">
+
+        
+
+      </div>
+
+    </div>
+
+
+  </aside>
+
+  <div class="col-xs-8">
+
+    <ul class="nav nav-tabs nav-justified">
+
+      <li class="<%= 'active' if current_page?(end_user_path(@end_user)) %>"><%= link_to end_user_path(@end_user) do %>events <span class="badge"><%= @count_events %></span><% end %></li>
+
+
+      <li class="<%= 'active' if current_page?(likes_end_user_path(@end_user)) %>"><%= link_to likes_end_user_path(@end_user) do %>Likes<span class="badge"><%= @count_favevents %></span><% end %></li>
+
+    </ul>
+
+    <%= render 'events/events', events: @favevents %>
+
+  </div>
+
+</div>

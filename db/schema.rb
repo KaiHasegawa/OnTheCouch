@@ -10,18 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_071420) do
+ActiveRecord::Schema.define(version: 2019_10_10_111605) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -38,8 +34,70 @@ ActiveRecord::Schema.define(version: 2019_10_03_071420) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_end_users_on_email", unique: true
+    t.string "end_user_image_id"
+    t.boolean "admin", default: false
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["end_user_id", "event_id"], name: "index_entries_on_end_user_id_and_event_id", unique: true
+    t.index ["end_user_id"], name: "index_entries_on_end_user_id"
+    t.index ["event_id"], name: "index_entries_on_event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "event_name"
+    t.string "event_image_id"
+    t.text "event_description"
+    t.integer "end_user_id"
+    t.string "content"
+    t.datetime "event_date"
+    t.datetime "event_time"
+    t.string "event_fee"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["end_user_id"], name: "index_events_on_end_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "release_date"
+    t.text "item_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_id"
+    t.string "tag_list"
+    t.string "actor_list"
+    t.string "genre_list"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
 end

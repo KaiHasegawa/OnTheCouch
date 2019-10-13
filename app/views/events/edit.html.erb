@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css" />
+ <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/lang/ja.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+  <title></title>
+</head>
+<body>
+
+
+<h1>イベント編集</h1>
+
+
+<%= form_with model: @event, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :イベント名 %>
+	<%= f.text_field :event_name, class: 'form-control', id: 'event_name' %>
+  </div>
+
+<%= f.date_field :event_date %>
+<%= f.time_field :event_time %>
+  <div class="form-group">
+  	<%= f.label :event_description %>
+    <%= f.text_area :event_description, rows: 5, class: 'form-control', id: 'event_description' %>
+  </div>
+  <div class="form-group">
+  	<%= f.label :料金 %>
+    <%= f.text_field :event_fee %>
+  </div>
+  <div class="form-group">
+	<%= f.label :event_image %><br>
+  <%= f.file_field :event_image, class: 'form-control' %>
+    
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to 'Back', events_path %>
+
+  </div>
+<% end %>
+
+
+</body>
+</html>

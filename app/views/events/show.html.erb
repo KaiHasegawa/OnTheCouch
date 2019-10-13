@@ -1,0 +1,23 @@
+
+
+<%= attachment_image_tag @event, :event_image, :fill, 400, 500 %>
+<h1><%= @event.event_name %></h1>
+
+
+<p>
+  <strong>開催日時:</strong>
+  <%= @event.event_date.strftime("%-m月%-d日") %>
+  <%= @event.event_time.strftime("%H:%M") %>
+</p>
+<%= @event.event_fee %>
+  <p><%= @event.event_description %></p>
+
+ <% if !Entry.exists?(end_user_id:current_end_user.id, event_id: @event.id) %>
+    <%= link_to "お気に入り",entries_path(@event.id),method: :post %>
+ <% else %>
+    <%= link_to "お気に入り解除",entry_path(@event.id),method: :delete %>
+ <% end %>
+
+  
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

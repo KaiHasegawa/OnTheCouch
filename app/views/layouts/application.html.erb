@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>OnTheCouch</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+        <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<header class="site-header">
+    <h1 class="site-logo"></h1>
+    <nav class="gnav">
+        <ul class="gnav__menu">
+            <li class="gnav__menu__item"><a href="">About</a></li>
+            <li class="gnav__menu__item"><a href="">Works</a></li>
+            <li class="gnav__menu__item"><a href="">Recruit</a></li>
+            <li class="gnav__menu__item"><a href="">News</a></li>
+            <li class="gnav__menu__item"><a href="">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<body>
 
-  <body>
-    <%= yield %>
-  </body>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+  <div class="empty-box"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+</body>
+
+
+<footer class="site-footer">
+    <p class="copyright">@2017 WEBDESIGNDAY</p>
+</footer>
 </html>

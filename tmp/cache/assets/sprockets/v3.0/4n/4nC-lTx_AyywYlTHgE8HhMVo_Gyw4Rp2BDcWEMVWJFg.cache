@@ -1,0 +1,18 @@
+I"(function() {
+  $(function() {});
+
+  $('#foo').datetimepicker({
+    format: 'yyyy年 dd月 MM日 hh:mm',
+    language: 'en',
+    pickDate: true,
+    pickTime: true,
+    hourStep: 1,
+    minuteStep: 15,
+    secondStep: 30,
+    inputMask: true
+  });
+
+  ​;
+
+}).call(this);
+:ET
