@@ -2,12 +2,12 @@
 
 <%= attachment_image_tag @item, :image, :fill, 400, 500 %>
 <p>
-  <strong>Name:</strong>
+  <strong>作品名:</strong>
   <%= @item.name %>
 </p>
 
 <p>
-  <strong>Release date:</strong>
+  <strong>上映日:</strong>
   <%= @item.release_date %>
 </p>
 <p>監督名: <%= raw(@item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>

@@ -3,6 +3,10 @@ class EntriesController < ApplicationController
  #def index
    #@favorite_videos = current_end_user.favorites_videos
  #end
+ def index
+    @end_user = current_end_user
+    @entries = Entry.where(end_user_id: @end_user.id).all
+  end
 
  def create
    if Entry.create(end_user_id: @end_user.id,event_id: params[:format])

@@ -38,4 +38,15 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model EndUser do
+      edit do
+        # 全てのフィールドを加える
+        include_all_fields
+        # "name" field のみ readonly を設定
+        field :encrypted_password do
+          read_only true
+        end
+      end
+    end
 end

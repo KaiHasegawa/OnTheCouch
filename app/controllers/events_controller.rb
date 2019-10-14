@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @favo_users = @event.end_users
 
     #current_end_user.like(@event)
     #flash[:success] = 'お気に入り登録をしました。'

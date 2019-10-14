@@ -6,17 +6,31 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
+
 <header class="site-header">
+  <% if end_user_signed_in? %>
     <h1 class="site-logo"></h1>
     <nav class="gnav">
         <ul class="gnav__menu">
-            <li class="gnav__menu__item"><a href="">About</a></li>
-            <li class="gnav__menu__item"><a href="">Works</a></li>
-            <li class="gnav__menu__item"><a href="">Recruit</a></li>
-            <li class="gnav__menu__item"><a href="">News</a></li>
-            <li class="gnav__menu__item"><a href="">Contact</a></li>
+            <p><%#= link_to current_end_user.name"さん", mypage_path(current_end_user.id) %></p>
+            <p><%= link_to "作品一覧", items_path %></p>
+            <p><%= link_to "イベント一覧", events_path %></p>
+            <p><%= link_to "マイページ", events_path %></p>
+            <p><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></p>
         </ul>
     </nav>
+  <% else %>
+    <h1 class="site-logo"></h1>
+    <nav class="gnav">
+        <ul class="gnav__menu">
+            <p><%= link_to "作品一覧", items_path  %></p>
+            <p><%= link_to "イベント一覧", events_path %></p>
+            <p><%= link_to "ログイン", end_user_session_path %></p>
+            <p><%= link_to "サインアップ", new_end_user_session_path%></p>
+        </ul>
+    </nav>
+    </nav>
+    <% end %>
 </header>
 
 <body>
