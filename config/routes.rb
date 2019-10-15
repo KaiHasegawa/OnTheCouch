@@ -18,10 +18,13 @@ Rails.application.routes.draw do
 
 
   resources :end_users
-  resources :items
+  resources :items do
+    resources :reviews, only: [:index, :create, :destroy,:show] do
+      resources :comments, only: [:create, :destroy]
+    end
+  end
   resources :events
-  resources :entries
-
+  
 
   resources :relationships, only: [:create, :destroy]
 

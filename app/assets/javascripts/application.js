@@ -25,3 +25,12 @@ $(function(){
   $('.datepicker').attr(data);
   $('.datepicker').datetimepicker();
 });
+
+$(function () {
+        $('#star').raty({
+            size     : 36,
+            starOff: '/assets/star-off.png',
+            starOn : '/assets/star-on.png',
+            scoreName: 'review[stars]',
+         });
+        });

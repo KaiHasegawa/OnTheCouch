@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_111605) do
+ActiveRecord::Schema.define(version: 2019_10_14_091701) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2019_10_10_111605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "end_user_id"
+    t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["end_user_id"], name: "index_comments_on_end_user_id"
+    t.index ["review_id"], name: "index_comments_on_review_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -73,6 +83,17 @@ ActiveRecord::Schema.define(version: 2019_10_10_111605) do
     t.string "tag_list"
     t.string "actor_list"
     t.string "genre_list"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "end_user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "rate"
+    t.index ["end_user_id"], name: "index_reviews_on_end_user_id"
+    t.index ["item_id"], name: "index_reviews_on_item_id"
   end
 
   create_table "taggings", force: :cascade do |t|

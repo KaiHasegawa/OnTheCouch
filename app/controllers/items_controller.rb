@@ -1,3 +1,4 @@
+
 class ItemsController < ApplicationController
 
   def index
@@ -11,6 +12,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @review = Review.new
+    @reviews = @item.reviews
+    @comment = Comment.new
   end
 
   def new
@@ -58,7 +62,7 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name,:item_description, :release_date, :tag_list, :actor_list,:genre_list, :image)
+      params.require(:item).permit(:name,:item_description, :release_date, :tag_list, :actor_list,:genre_list, :image, :review_id, :rate)
     end
     def tag_params
       params.require(:tag).permit(:tag_list, :actor_list,:genre_list)

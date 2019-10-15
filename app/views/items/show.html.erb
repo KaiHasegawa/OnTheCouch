@@ -1,22 +1,100 @@
 
+	<%= attachment_image_tag @item, :image, :fill, 400, 500 %>
+	<p>
+	  <strong>作品名:</strong>
+	  <%= @item.name %>
+	</p>
 
-<%= attachment_image_tag @item, :image, :fill, 400, 500 %>
-<p>
-  <strong>作品名:</strong>
-  <%= @item.name %>
-</p>
-
-<p>
-  <strong>上映日:</strong>
-  <%= @item.release_date %>
-</p>
-<p>監督名: <%= raw(@item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
-<p>出演者: <%= raw(@item.actor_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
-<p>ジャンル: <%= raw(@item.genre_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
-  <p><%= @item.item_description %></p>
-
+	<p>
+	  <strong>上映日:</strong>
+	  <%= @item.release_date %>
+	</p>
+	<p>監督名: <%= raw(@item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+	<p>出演者: <%= raw(@item.actor_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+	<p>ジャンル: <%= raw(@item.genre_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+	  <p><%= @item.item_description %></p>
 
 
-  
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+
+<% if end_user_signed_in? && @item.reviewed_by?(current_end_user) %>
+	<h2>レビュー一覧</h2>
+	<% @reviews.each do |r| %>
+		<a href="/end_user/"><%= r.end_user.name %></a>
+		<%= r.body %>
+		<div id="star-rate-<%= r.id %>"></div>
+          <script>
+          $('#star-rate-<%= r.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= r.rate %>,
+          });
+          </script>  
+      <%= link_to 'コメントする', item_review_path(@item) %> |
+	<% end %>
+<% elsif end_user_signed_in? %>
+	<%= form_for [@item, @review] do |f| %>
+		<%= f.text_field :body %>
+		<br>
+		  <div class="form-group row" id="star">
+		    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+		    <%= f.hidden_field :rate, id: :review_star %>
+		  </div>
+		<%= f.submit 'レビューする' %>
+	<% end %>
+	<h2>レビュー一覧</h2>
+	<% @reviews.each do |r| %>
+		<a href="/end_user/"><%= r.end_user.name %></a>
+		<%= r.body %>
+		<div id="star-rate-<%= r.id %>"></div>
+          <script>
+          $('#star-rate-<%= r.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= r.rate %>,
+          });
+          </script>  
+        <%= link_to 'コメントする', item_review_path(@item) %> |
+	<% end %>
+<% else %>
+	<% @reviews.each do |r| %>
+		<a href="/end_users/"><%= r.end_user.name %></a>
+		<%= r.body %>
+		<div id="star-rate-<%= r.id %>"></div>
+          <script>
+          $('#star-rate-<%= r.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= r.rate %>,
+          });
+          </script>  
+	<% end %>
+<% end %>
+
+
+	  
+	<%= link_to 'Edit', edit_item_path(@item) %> |
+	<%= link_to 'Back', items_path %>
+	<script>
+		  $('#star').raty({
+		  	number: 5,
+		    size     : 36,
+		    starOff:  '<%= asset_path('star-off.png') %>',
+		    starOn : '<%= asset_path('star-on.png') %>',
+		    starHalf: '<%= asset_path('star-half.png') %>',
+		    scoreName: 'review[rate]',
+		    half: true,
+		  });
+　　</script>
+

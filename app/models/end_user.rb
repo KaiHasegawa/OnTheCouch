@@ -9,6 +9,9 @@ class EndUser < ApplicationRecord
       has_many :entries
 
       has_many :favevents, through: :entries, source: :event
+      has_many :reviews, dependent: :destroy
+      has_many :comments
+
 
 	def email_required?
 		false

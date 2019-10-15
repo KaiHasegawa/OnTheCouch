@@ -3,8 +3,15 @@
 <head>
         <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag    'application', media: 'all'%>
+      <%= javascript_include_tag 'application'%>
+    <!-- <script src="/js/jquery.raty.js"></script> -->
+    <script>
+      $(function(){
+        $('#star1').raty();
+      });
+    </script>
+  <!-- <script type="text/javascript" src="./jquery.raty.js"></script> -->
 </head>
 
 <header class="site-header">

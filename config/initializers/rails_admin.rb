@@ -39,7 +39,7 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model EndUser do
+  config.model "EndUser" do
       edit do
         # 全てのフィールドを加える
         include_all_fields
