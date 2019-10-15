@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all'%>
+      <%= javascript_include_tag 'application'%>
+    <!-- <script src="/js/jquery.raty.js"></script> -->
+    <script>
+      $(function(){
+        $('#star1').raty();
+      });
+    </script>
+  <!-- <script type="text/javascript" src="./jquery.raty.js"></script> -->
+</head>
+
+<header class="site-header">
+  <% if end_user_signed_in? %>
+    <h1 class="site-logo"></h1>
+    <nav class="gnav">
+        <ul class="gnav__menu">
+            <p><%#= link_to current_end_user.name"さん", mypage_path(current_end_user.id) %></p>
+            <p><%= link_to "作品一覧", items_path %></p>
+            <p><%= link_to "イベント一覧", events_path %></p>
+            <p><%= link_to "マイページ", events_path %></p>
+            <p><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></p>
+        </ul>
+    </nav>
+  <% else %>
+    <h1 class="site-logo"></h1>
+    <nav class="gnav">
+        <ul class="gnav__menu">
+            <p><%= link_to "作品一覧", items_path  %></p>
+            <p><%= link_to "イベント一覧", events_path %></p>
+            <p><%= link_to "ログイン", end_user_session_path %></p>
+            <p><%= link_to "サインアップ", new_end_user_session_path%></p>
+        </ul>
+    </nav>
+    </nav>
+    <% end %>
+</header>
+
+<body>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+  <div class="empty-box"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+</body>
+
+
+<footer class="site-footer">
+    <p class="copyright">@2017 WEBDESIGNDAY</p>
+</footer>
+</html>

@@ -1,0 +1,21 @@
+<% if current_end_user.favpost?(event) %>
+
+  <%= form_for(current_end_user.entries.find_by(event_id: event.id), html: { method: :delete }) do |f| %>
+
+    <%= hidden_field_tag :event_id, event.id %>
+
+    <%= f.submit 'お気に入り登録解除', class: 'btn btn-danger' %>
+
+  <% end %>
+
+<% else %>
+
+  <%= form_for(current_end_user.entries.build) do |f| %>
+
+    <%= hidden_field_tag :event_id, event.id %>
+
+    <%= f.submit 'お気に入り登録', class: 'btn btn-primary' %>
+
+  <% end %>
+
+<% end %>

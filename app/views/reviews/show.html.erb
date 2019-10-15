@@ -1,0 +1,9 @@
+<%= @review.body %>
+<%= form_for [@item, @comment] do |f| %>
+			<%= f.text_field :content %>
+			<br>
+			<%= f.submit 'コメントする' %>
+	    <% r.comments.each do |c| %>
+	    	<%= c.content %>
+	    <% end %>
+<% end %>

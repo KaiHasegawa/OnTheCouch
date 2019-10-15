@@ -1,0 +1,11 @@
+I"�(function() {
+  $(function() {
+    $('.datepicker').datetimepicker({
+      format: 'YYYY-MM-DD-hh',
+      locale: 'ja',
+      dayViewHeaderFormat: 'YYYY年 MM月'
+    });
+  });
+
+}).call(this);
+:ET
