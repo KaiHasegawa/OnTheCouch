@@ -82,3 +82,5 @@ gem 'cancancan', '~> 2.0'
 
 gem 'jquery-rails' 
 gem 'jquery-ui-rails'
+
+gem 'ransack'

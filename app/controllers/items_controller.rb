@@ -2,11 +2,12 @@
 class ItemsController < ApplicationController
 
   def index
-    if params[:tag]
+    if params[:q]
+      render :index
+    elsif params[:tag]
       @items = Item.tagged_with(params[:tag])
     else
       @items = Item.all
-
     end
   end
 

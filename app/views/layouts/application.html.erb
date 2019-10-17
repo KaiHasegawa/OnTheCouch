@@ -48,6 +48,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
+          <%= search_form_for @q do |f| %>
+            <%= f.label :name_or_actor_name, "作品検索" %>
+            <%= f.search_field :name_cont %>
+
+            <%= f.submit "検索" %>
+          <% end %>
           <%= yield %>
         </div>
       </div>

@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_search
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
@@ -7,6 +9,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
+  def set_search
+      @q = Item.ransack(params[:q])
+      @items = @q.result(distinct: true)
+  end
   #def after_sign_in_path_for(resource)
     #case resource
       #when Admin
