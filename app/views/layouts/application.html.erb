@@ -1,43 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <%= csrf_meta_tags %>
+      <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
       <%= stylesheet_link_tag    'application', media: 'all'%>
       <%= javascript_include_tag 'application'%>
-    <!-- <script src="/js/jquery.raty.js"></script> -->
     <script>
       $(function(){
         $('#star1').raty();
       });
     </script>
-  <!-- <script type="text/javascript" src="./jquery.raty.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 </head>
 
 <header class="site-header">
   <% if end_user_signed_in? %>
-    <h1 class="site-logo"></h1>
-    <nav class="gnav">
-        <ul class="gnav__menu">
-            <p><%#= link_to current_end_user.name"さん", mypage_path(current_end_user.id) %></p>
-            <p><%= link_to "作品一覧", items_path %></p>
-            <p><%= link_to "イベント一覧", events_path %></p>
-            <p><%= link_to "マイページ", events_path %></p>
-            <p><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></p>
-        </ul>
-    </nav>
+    <div class="site-logo">
+      <%= link_to root_path, data: {"turbolinks" => false} do %>
+            <%= image_tag "onthecouch.png", size: "80x70" %>
+      <% end %>
+    </div>
+    <div class="menu_style">
+      <ul class="menu">
+        <li><a href="#">見つける▼ </a>
+          <ul class="sub">
+            <li><%= link_to "映 画", items_path  %></li>
+            <li><%= link_to "PoP Upイベント", events_path %></li>
+          </ul>
+        </li>
+        <li><a href="#">マイページ▼ </a>
+          <ul class="sub">
+            <li><%= link_to "マイページ", edit_end_user_path(current_end_user) %></li>
+            <li><a href="#">タイムライン </a></li>
+            <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="search">
+     <%= search_form_for @q do |f| %>
+          <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont, "作品検索" %>
+          <%= f.search_field :name_or_actors_name_or_tags_name_or_genres_name_cont %>
+          <label><%= f.radio_button :name, "作品名" %> 作品で絞り込む </label>
+          <%= f.submit "検索" %>
+     <% end %>
+    </div>
   <% else %>
-    <h1 class="site-logo"></h1>
-    <nav class="gnav">
-        <ul class="gnav__menu">
-            <p><%= link_to "作品一覧", items_path  %></p>
-            <p><%= link_to "イベント一覧", events_path %></p>
-            <p><%= link_to "ログイン", end_user_session_path %></p>
-            <p><%= link_to "サインアップ", new_end_user_session_path%></p>
-        </ul>
-    </nav>
-    </nav>
-    <% end %>
+    <div class="site-logo">
+      <%= link_to root_path, data: {"turbolinks" => false} do %>
+            <%= image_tag "onthecouch.png", size: "80x70" %>
+      <% end %>
+    </div>
+    <div class="menu_style">
+      <ul class="menu">
+        <li><a href="#">見つける▼ </a>
+          <ul class="sub">
+            <li><%= link_to "映 画", items_path  %></li>
+            <li><%= link_to "PoP Upイベント", events_path %></li>
+          </ul>
+        </li>
+        <li><a href="#">ログイン・会員登録▼ </a>
+          <ul class="sub">
+            <li><%= link_to "ログイン", new_end_user_session_path  %></li>
+            <li><%= link_to "会員登録", new_end_user_registration_path  %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="search">
+       <%= search_form_for @q do |f| %>
+            <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont, "作品検索" %>
+            <%= f.search_field :name_or_actors_name_or_tags_name_or_genres_name_cont %>
+            <%= f.submit "検索" %>
+       <% end %>
+    </div>
+  <% end %>
 </header>
 
 <body>
@@ -48,16 +86,22 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <%= search_form_for @q do |f| %>
-            <%= f.label :name_or_actor_name, "作品検索" %>
-            <%= f.search_field :name_cont %>
-
-            <%= f.submit "検索" %>
-          <% end %>
           <%= yield %>
         </div>
       </div>
     </div>
+
+<script>
+    jQuery(function($){
+  $('ul.sub').hide();
+  $('ul.menu>li').hover(function(){
+      $('ul:not(:animated)', this).slideDown(400);
+    },
+    function(){
+      $('ul',this).hide();
+  });
+});
+</script>
 </body>
 
 

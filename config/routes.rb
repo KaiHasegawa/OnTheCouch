@@ -30,7 +30,8 @@ Rails.application.routes.draw do
 
   resources :entries, only: [:create, :destroy]
 
-  root to: 'items#index'
+  root to: 'items#about'
+  get 'mypage' => 'end_users#mypage'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
