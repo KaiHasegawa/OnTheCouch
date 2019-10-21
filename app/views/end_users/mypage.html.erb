@@ -1,7 +1,0 @@
-<h1>マイページ</h1>
-
-<% if current_end_user.try(:admin?) %>
-      <p class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "管理画面へ", "/admin" %></p>
-<% end %>
-
-

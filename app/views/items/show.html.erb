@@ -5,7 +5,6 @@
 	  <%= @item.name %>
 	</p>
 
-	<p>
 	  <strong>上映日:</strong>
 	  <%= @item.release_date %>
 	</p>
@@ -30,13 +29,15 @@
             starHalf: '<%= asset_path('star-half.png') %>',
             half: true,
             readOnly: true,
+            <% unless r.rate.blank? %>
             score: <%= r.rate %>,
+            <% end %>
           });
           </script>  
-      <%= link_to 'コメントする', item_review_path(@item) %> |
+      <%= link_to 'コメントする', item_review_path(@item,r) %> |
 	<% end %>
 <% elsif end_user_signed_in? %>
-	<%= form_for [@item, @review] do |f| %>
+	<%= form_for(@review, url: item_reviews_path(@item)) do |f| %>
 		<%= f.text_field :body %>
 		<br>
 		  <div class="form-group row" id="star">
@@ -51,17 +52,19 @@
 		<%= r.body %>
 		<div id="star-rate-<%= r.id %>"></div>
           <script>
-          $('#star-rate-<%= r.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= r.rate %>,
+		  $(function(){
+            $('#star-rate-<%= r.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= r.rate %>,
+            });
           });
           </script>  
-        <%= link_to 'コメントする', item_review_path(@item) %> |
+          <%= link_to 'コメントする', item_review_path(@item,r) %> |
 	<% end %>
 <% else %>
 	<% @reviews.each do |r| %>
@@ -69,24 +72,25 @@
 		<%= r.body %>
 		<div id="star-rate-<%= r.id %>"></div>
           <script>
+		$(function(){
           $('#star-rate-<%= r.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= r.rate %>,
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= r.rate %>,
+            });
           });
           </script>  
 	<% end %>
 <% end %>
 
 
-	  
-	<%= link_to 'Edit', edit_item_path(@item) %> |
 	<%= link_to 'Back', items_path %>
 	<script>
+		$(function(){
 		  $('#star').raty({
 		  	number: 5,
 		    size     : 36,
@@ -96,5 +100,6 @@
 		    scoreName: 'review[rate]',
 		    half: true,
 		  });
+		 });
 　　</script>
 

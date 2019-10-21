@@ -14,10 +14,11 @@ class EndUsersController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    @review = Review.find(params[:id])
     @end_user = EndUser.find(params[:id])
-    @reviews = @item.reviews
+    @review = Review.find(params[:id])
+    @reviews = @end_user.reviews
+    @entry = Entry.find(params[:id])
+    @entries = @end_user.entries
   end
 
 	def show
@@ -49,7 +50,7 @@ class EndUsersController < ApplicationController
   end
 private
     def end_user_params
-      params.require(:end_user).permit(:name,:image,:events,:entries,:favevents,:end_user_image_id)
+      params.require(:end_user).permit(:name,:image,:events,:entries,:favevents,:end_user_image,:review)
     end
 
 end
