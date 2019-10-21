@@ -1,9 +1,13 @@
 <%= @review.body %>
-<%= form_for [@item, @comment] do |f| %>
+      <%#= link_to "削除",(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<%= form_for([@review.item, @review, @comment]) do |f| %>
 			<%= f.text_field :content %>
 			<br>
 			<%= f.submit 'コメントする' %>
-	    <% r.comments.each do |c| %>
-	    	<%= c.content %>
-	    <% end %>
 <% end %>
+
+	    <% @comments.each do |c| %>
+	    	<%= c.content %>
+	    	<%= c.end_user.name %>
+	    <% end %>

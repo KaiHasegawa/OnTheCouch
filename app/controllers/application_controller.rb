@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_search
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
@@ -7,21 +9,32 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
-  #def after_sign_in_path_for(resource)
-    #case resource
-      #when Admin
-      #admins_path
-      #when EndUser
-      #root_path
+  def set_search
+    if params[:q].present?
+      if params[:q][:name].present?
+      @items = Item.where("name LIKE ?", "%#{params[:q][:name_or_actors_name_or_tags_name_or_genres_name_cont]}%")
+      else
+      @q = Item.ransack(params[:q])
+      @items = @q.result(distinct: true)
+      end
+    end
+      @q = Item.ransack(params[:q])
+  end
+
+  def has_key?
+    keys = [:name]
+    params[:q].has_key?(:name)
+  end
+
+  #def has_key
+    #keys = [:name, :actors_name]
+    #keys.each do |key|
+      #if params[:q].has_key?(key)
+        #return key
+      #end
     #end
   #end
 
-  #def after_sign_out_path_for(resource_or_scope)
-    #if resource_or_scope == :end_user
-     #root_path
-    #else
-     #root_path
-    #end
-  #end
+  
 
 end

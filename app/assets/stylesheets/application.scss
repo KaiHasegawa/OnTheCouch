@@ -19,7 +19,6 @@
 
 
 body{
-    background: #81bcd8;
 	margin-top: -50px; /* 固定ナビの高さ分のネガティブマージン */
 	padding-top: 50px;
 }
@@ -28,19 +27,21 @@ body{
 	margin-top: 100px; /* 固定ナビの高さ分のネガティブマージン */
 }
 .site-header{
-    background: #fff;
+    margin-top: 30px;
+    background: #000000 ;
     /*padding: 60px 20px;*/
     position: fixed;
     justify-content: space-between;
     width: 100%;
     clear: left;
-    height: 100px;
-    background-image: url(canyon.jpg);
+    height: 70px;
     z-index: 999;
 }
-.site-logo img{
+.site-logo{
+    float:left;
     height: 20px;
     width: auto;
+    margin-left: 160px;
 }
 .gnav__menu{
     display: flex;
@@ -72,3 +73,74 @@ body{
     font-size: 12px;
     text-align: center;
 }
+.search{
+    float: right;
+    width: 400px;
+    color: white;
+    height: 70px;
+    padding-top: 20px;
+
+}
+.menu_style{
+    position: right;
+    margin-right: 160px;
+    width: 300px;
+    float:right;
+    clear: right;
+    height: 70px;
+}
+ul.menu {
+
+  padding: 0 ;
+  margin: 0;
+}
+ul.menu li {
+  float: left;  /*メインメニューは横並びに*/
+  width: 150px;
+  height: 70px;
+  background-color: #2F4B97;
+  position: relative;  /*子要素の基準とするために指定*/
+  list-style-type: none;
+  box-sizing:border-box;
+}
+ul.menu li a {
+  display: block;
+  line-height: 70px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  position: right;
+}
+ul.menu li a:hover {
+  background-color: #5169A8;
+}
+ul.menu li ul.sub {
+  display: none;
+  position: absolute;
+  /*サブメニューを開いた際に、背後の要素の影響を受けないようにする*/
+  padding: 0;
+  margin: 0;
+}
+ 
+ul.menu li:hover ul.sub {
+  display: block; 
+}
+ 
+ul.menu li ul.sub li:first-child{
+  border-top: 1px solid #1C2973; /*最初の要素のみボーダートップを指定*/
+}
+ul.menu li ul.sub li {
+  border: 1px solid #1C2973;  /*ボーダーの指定*/
+  border-top: none;  /*ボーダートップは重なって太くなるので解除*/
+}
+ul.menu {
+ zoom:1; /*Clearfix IE6-7 対応*/
+}
+ul.menu:after { /*Clearfix*/
+  height:0;
+  visibility:hidden;
+  content:".";
+  display:block;
+  clear:both;
+}
+

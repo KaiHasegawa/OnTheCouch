@@ -4,6 +4,10 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+      attachment :end_user_image
+
+
+
       has_many :events
 
       has_many :entries

@@ -3,24 +3,22 @@ before_action :authenticate_end_user!, only: [:show, :create]
 
   def show
     @review = Review.find(params[:id])
-    @comments = @review.comments
     @comment = Comment.new
+    @comments = @review.comments
   end
 
   def create
-    @review = Item.find(params[:item_id]).reviews.new(review_params)
-    @review.end_user_id = current_end_user.id
-    if @review.save!
-      redirect_back(fallback_location: root_path)
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    @review = Review.new(review_params)
+    @review.end_user = current_end_user
+    @review.item_id = params[:item_id]
+    @review.save!
   end
-
 
   private
     def review_params
-      params.require(:review).permit(:body, :rate)
+      params.require(:review).permit(:body, :rate, :comment, :end_user_id, :item_id)
     end
-
+    def comment_params
+      params.require(:comment).permit(:review_id, :end_user_id, :content)
+    end
 end
