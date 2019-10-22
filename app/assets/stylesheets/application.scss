@@ -23,8 +23,8 @@ body{
 	padding-top: 50px;
 }
 .empty-box{
-    padding-top: 50px;
-	margin-top: 100px; /* 固定ナビの高さ分のネガティブマージン */
+	margin-top: 80px; /* 固定ナビの高さ分のネガティブマージン */
+  z-index: -999;
 }
 .site-header{
     margin-top: 30px;

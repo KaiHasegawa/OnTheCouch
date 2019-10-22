@@ -6,8 +6,7 @@
 
 <p>
   <strong>開催日時:</strong>
-  <%= @event.event_date.strftime("%-m月%-d日") %>
-  <%= @event.event_time.strftime("%H:%M") %>
+  <%= @event.event_date.strftime("%-m月%-d日%H:%M") %>
 </p>
 <%= @event.event_fee %>
   <p><%= @event.event_description %></p>

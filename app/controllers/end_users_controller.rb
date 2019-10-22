@@ -12,12 +12,12 @@ class EndUsersController < ApplicationController
 
     counts(@end_user)
   end
-
+  def index
+    @end_user = EndUser.all
+  end
   def edit
     @end_user = EndUser.find(params[:id])
-    @review = Review.find(params[:id])
     @reviews = @end_user.reviews
-    @entry = Entry.find(params[:id])
     @entries = @end_user.entries
   end
 
