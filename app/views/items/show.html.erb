@@ -1,5 +1,5 @@
 
-	<%= attachment_image_tag @item, :image, :fill, 400, 500 %>
+	<%= attachment_image_tag @item, :image, :fill, 400, 500,fallback: "no_images.png" %>
 	<p>
 	  <strong>作品名:</strong>
 	  <%= @item.name %>

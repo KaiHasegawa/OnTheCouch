@@ -75,11 +75,21 @@ body{
 }
 .search{
     float: right;
-    width: 400px;
-    color: white;
+    width: 500px;
     height: 70px;
     padding-top: 20px;
-
+}
+.search-text{
+  color: white;
+  float: left;
+  padding-right: 3px;
+}
+.search-texxt{
+    float: left;
+    color: white;
+    font-weight: bold;
+    margin-top: 3px;
+    font-size: 14px;
 }
 .menu_style{
     position: right;

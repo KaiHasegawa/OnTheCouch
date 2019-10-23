@@ -35,9 +35,10 @@
     </div>
     <div class="search">
      <%= search_form_for @q do |f| %>
-          <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont, "作品検索" %>
+          <p class="search-texxt">作品検索</p>
+          <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont,"_" %>
           <%= f.search_field :name_or_actors_name_or_tags_name_or_genres_name_cont %>
-          <label><%= f.radio_button :name, "作品名" %> 作品で絞り込む </label>
+          <label><%= f.radio_button :name, "作品名" %><p class="search-text">作品で絞り込む</p> </label>
           <%= f.submit "検索" %>
      <% end %>
     </div>
@@ -65,8 +66,10 @@
     </div>
     <div class="search">
        <%= search_form_for @q do |f| %>
-            <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont, "作品検索" %>
+            <p class="search-texxt">作品検索</p>
+            <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont,"_" %>
             <%= f.search_field :name_or_actors_name_or_tags_name_or_genres_name_cont %>
+            <label><%= f.radio_button :name, "作品名" %><p class="search-text">作品で絞り込む</p> </label>
             <%= f.submit "検索" %>
        <% end %>
     </div>
