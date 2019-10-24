@@ -76,7 +76,31 @@
 
 .item-box{
   display: inline-flex;
-  margin: 5px;
+  margin: 50px;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: rgba(255,255,255,0.4);
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 3px 5px 8px #808080;
+　font-family: 'Noto Sans JP', sans-serif;
+  border-radius: 5px;
+}
+.container{
+	margin: 0 auto;
+	padding-left: 100px;
+	width: 100%;
+}
+.item-image{
+	width: 250px;
+  height:280px;
+}
+.item-column{
+	font-weight: bold;
+}
+.item-tag{
+	padding-right: 2px;
+}
+.item-contens{
+	font-size: 13px;
 }

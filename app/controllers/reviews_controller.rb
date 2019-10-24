@@ -12,7 +12,17 @@ before_action :authenticate_end_user!, only: [:show, :create]
     @review.end_user = current_end_user
     @review.item_id = params[:item_id]
     @review.save!
+    redirect_to item_path(@review.item_id,params[:item_id])
   end
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    respond_to do |format|
+      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
     def review_params

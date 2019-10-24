@@ -1,26 +1,44 @@
 
 
-<%= attachment_image_tag @event, :event_image, :fill, 400, 500 %>
-<h1><%= @event.event_name %></h1>
 
 
-<p>
-  <strong>開催日時:</strong>
-  <%= @event.event_date.strftime("%-m月%-d日%H:%M") %>
-</p>
-<%= @event.event_fee %>
-  <p><%= @event.event_description %></p>
+<table class=table >
+  <tr>
+    <td width="40%">
+      <%= attachment_image_tag @event, :event_image, :fill, 500, 500,fallback: "no.png", size:'500x500'%>
 
- <% if !Entry.exists?(end_user_id:current_end_user.id, event_id: @event.id) %>
-    <%= link_to "お気に入り",entries_path(@event.id),method: :post %>
- <% else %>
-    <%= link_to "お気に入り解除",entry_path(@event.id),method: :delete %>
- <% end %>
+    </td>
+    <td width="60%">
+      <table >
+        <tr><h1 class="item-column"><%= @event.event_name %></h2></tr><br>
+        <tr><h4 class="item-column">開催日時</h4>
+        	<p class="event-content"><%= @event.event_date.strftime("%-m月%-d日%H:%M") %></p></tr>
+        <br>
+        <tr><h4 class="item-column">参加費</h4><p class="event-content">¥<%= @event.event_fee %></p></tr>
+        <br>
+              	<p class="item-content"><%= @event.event_description %></p></tr>
+        <tr></tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
-  
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %><br><br><br><br><br><br><br>
-
-<% @favo_users.each do |user| %>
-<%= user.name %>
-<% end %>
+<div class="entry-box">
+	<h4 class="item-column">このイベントに参加する人</h4>
+	<div class="entry-button">
+		<% if !Entry.exists?(end_user_id:current_end_user.id, event_id: @event.id) %>
+			<%= link_to "参加したい！",entries_path(@event.id),method: :post %>
+		<% else %>
+			<%= link_to "やっぱりやめる",entry_path(@event.id),method: :delete %>
+		<% end %>
+	</div>
+		<% @favo_users.each do |user| %>
+		<div class="entry-image">
+				<%= attachment_image_tag user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "entry-image" %>
+				<br><br>
+		</div>
+		<div class="entry-user">
+			<%= user.name %>
+		</div>
+		<% end %>
+</div>

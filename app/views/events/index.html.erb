@@ -1,28 +1,20 @@
-<h1>events</h1>
+<h1 class="index-head">PoP Upイベント</h1>
+
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-          <td><%= event.event_name %></td>
-          <td><%= event.event_fee %></td>
-          <td><%= event.event_description %></td>
-          <td><%= link_to 'Show', event %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <tr>
+    <td>
+      <div class="container">
+        <% @events.each do |event| %>
+          <div class="item-box">
+            <%= link_to event,class: "item-image" do %>
+              <%= attachment_image_tag event, :event_image, :fill, 1000, 1000,fallback: "no.png", size:'200x230'%><br>
+              <br>
+              <%= event.event_name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </td>
+  </tr>
 </table>
-
-<br>
-<%= link_to 'New Event', new_event_path %>
