@@ -21,9 +21,14 @@
 body{
 	margin-top: -50px; /* 固定ナビの高さ分のネガティブマージン */
 	padding-top: 50px;
-  background: #fcf8f5 ;
   font-family: 'Lato', sans-serif;
+ background-color: white;
 }
+/*back-ground{
+  width:100% ;
+  background-color: white;
+  box-shadow: 4px 4px 1px #808080;
+}*/
 .empty-box{
 	margin-top: 80px; /* 固定ナビの高さ分のネガティブマージン */
   z-index: -999;
