@@ -1,31 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Items</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Release date</th>
-      <th>監督名</th>
-      <th>出演者名</th>
-      <th>ジャンル</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= link_to item.name,item %></td>
-        <td><%= item.release_date %></td>
-        <td><%= raw(item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></td>
-        <td><%= raw(item.actor_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></td>
-        <td><%= raw(item.genre_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></td>
-        <td><%= link_to 'Show', item %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <tr>
+    <td>
+      <div class="container">
+        <% @items.each do |item| %>
+          <div class="item-box">
+            <%= link_to item,class: "item-image" do %>
+              <%= attachment_image_tag item, :image, :fill, 1000, 1000,fallback: "no_images.png", size:'200x230'%><br>
+              <br>
+              <%= item.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </td>
+  </tr>
 </table>
-
-<br>

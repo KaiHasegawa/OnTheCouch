@@ -12,18 +12,19 @@ class EndUsersController < ApplicationController
 
     counts(@end_user)
   end
-
+  def index
+    @end_user = EndUser.all
+  end
   def edit
     @end_user = EndUser.find(params[:id])
-    @review = Review.find(params[:id])
     @reviews = @end_user.reviews
-    @entry = Entry.find(params[:id])
     @entries = @end_user.entries
   end
 
 	def show
-		@end_user = EndUser.find(params[:id])
-		@favevents = @end_user.favevents.page(params[:page])
+    @end_user = EndUser.find(params[:id])
+    @reviews = @end_user.reviews
+    @entries = @end_user.entries
 	end
 
   def mypage
@@ -50,7 +51,7 @@ class EndUsersController < ApplicationController
   end
 private
     def end_user_params
-      params.require(:end_user).permit(:name,:image,:events,:entries,:favevents,:end_user_image,:review)
+      params.require(:end_user).permit(:name,:image,:events,:entries,:favevents,:end_user_image,:review,:event_image,:item_id)
     end
 
 end

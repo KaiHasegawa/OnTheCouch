@@ -21,10 +21,17 @@
 body{
 	margin-top: -50px; /* 固定ナビの高さ分のネガティブマージン */
 	padding-top: 50px;
+  font-family: 'Lato', sans-serif;
+ background-color: #fafafa;
 }
+/*back-ground{
+  width:100% ;
+  background-color: white;
+  box-shadow: 4px 4px 1px #808080;
+}*/
 .empty-box{
-    padding-top: 50px;
-	margin-top: 100px; /* 固定ナビの高さ分のネガティブマージン */
+	margin-top: 80px; /* 固定ナビの高さ分のネガティブマージン */
+  z-index: -999;
 }
 .site-header{
     margin-top: 30px;
@@ -75,11 +82,21 @@ body{
 }
 .search{
     float: right;
-    width: 400px;
-    color: white;
+    width: 500px;
     height: 70px;
     padding-top: 20px;
-
+}
+.search-text{
+  color: white;
+  float: left;
+  padding-right: 3px;
+}
+.search-texxt{
+    float: left;
+    color: white;
+    font-weight: bold;
+    margin-top: 3px;
+    font-size: 14px;
 }
 .menu_style{
     position: right;
@@ -144,3 +161,48 @@ ul.menu:after { /*Clearfix*/
   clear:both;
 }
 
+.index-head{
+  text-align: center;
+  font-weight: bold;
+  margin: 50px auto;
+  font-family: 'Oswald', sans-serif;
+}
+
+.entry-box{
+  background-color: #EEEEEE ;
+  padding: 10px;
+
+}
+.entry-button{
+
+}
+.entry-user{
+  display: inline-flex;
+  text-align: center;
+}
+.entry-image{
+  display: inline-flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+.review-image{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+.item-review{
+  text-align: center;
+}
+.item-body{
+  padding-top: 30px;
+  font-size: 16px;
+  text-align: left;
+}
+.events{
+  display: inline-flex;
+  margin: 0 auto;
+}
+.button{
+  margin: 30px;
+}

@@ -1,3 +1,36 @@
 <div class="about-background">
-	<h1>About</h1>
+	<div class="about-top">
+		<p class="top-logo">On The Couch</p>
+		<h2 class="top-head">映画で人と繋がる。
+		<p class="top-comment">
+			On the Couchは映画を観終わった後に<br>
+			<br>
+			「この感動をだれかと共有したい！」を叶えるサイトです。<br>
+			<br>
+			ネタバレなど気にせず、<br>
+			<br>
+			観た人だけしか味わえない気持ちを分かち合いましょう！
+		</p>
+	</div>
+<%
+=begin
+%>
+	<div class="top-box">
+		<p class="top-head">On the Couchの楽しみ方</p>
+		<div class="top-content">
+		<p class="conten-title">01</p>
+		<img src="画像へのパス" width="100px" height="300px" alt="No image">
+		</div>
+	</div>
+<%
+=end
+%>
+	<div class="couch">
+		<div class="wrap">
+	    <p class="couch">↓↓↓On the Couch!!↓↓↓</p>
+	    <%= link_to items_path do %>
+	    <%= image_tag('couch.png') %>
+	    <% end %>
+		</div>
+	</div>
 </div>

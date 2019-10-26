@@ -5,6 +5,8 @@
       <%= csp_meta_tag %>
       <%= stylesheet_link_tag    'application', media: 'all'%>
       <%= javascript_include_tag 'application'%>
+      <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Noto+Sans+JP|Rock+Salt|Sawarabi+Mincho&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Oswald:700 rel="stylesheet">
 
 </head>
 
@@ -35,9 +37,10 @@
     </div>
     <div class="search">
      <%= search_form_for @q do |f| %>
-          <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont, "作品検索" %>
+          <p class="search-texxt">作品検索</p>
+          <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont,"_" %>
           <%= f.search_field :name_or_actors_name_or_tags_name_or_genres_name_cont %>
-          <label><%= f.radio_button :name, "作品名" %> 作品で絞り込む </label>
+          <label><%= f.radio_button :name, "作品名" %><p class="search-text">作品で絞り込む</p> </label>
           <%= f.submit "検索" %>
      <% end %>
     </div>
@@ -65,8 +68,10 @@
     </div>
     <div class="search">
        <%= search_form_for @q do |f| %>
-            <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont, "作品検索" %>
+            <p class="search-texxt">作品検索</p>
+            <%= f.label :name_or_actors_name_or_tags_name_or_genres_name_cont,"_" %>
             <%= f.search_field :name_or_actors_name_or_tags_name_or_genres_name_cont %>
+            <label><%= f.radio_button :name, "作品名" %><p class="search-text">作品で絞り込む</p> </label>
             <%= f.submit "検索" %>
        <% end %>
     </div>
@@ -81,7 +86,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
+          <div class="back-ground">
           <%= yield %>
+        </div>
         </div>
       </div>
     </div>
@@ -101,6 +108,6 @@
 
 
 <footer class="site-footer">
-    <p class="copyright">@2017 WEBDESIGNDAY</p>
+    <p class="copyright">@Kai Hasegawa</p>
 </footer>
 </html>
