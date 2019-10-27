@@ -1,6 +1,7 @@
-ActsAsTaggableOn.force_binary_collation = true
 
 Rails.application.configure do
+  ActsAsTaggableOn.force_binary_collation = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
