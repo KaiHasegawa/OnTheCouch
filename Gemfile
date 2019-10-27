@@ -81,13 +81,10 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'rails_admin', '~> 1.3'
 gem 'cancancan', '~> 2.0'
 
-gem 'jquery-rails' 
 gem 'jquery-ui-rails'
 
 gem 'ransack'
 
-group :production do 
-  
+group :production do
   gem 'mysql2'
-
 end
