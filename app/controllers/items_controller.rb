@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
     if params[:q]
       render :index
     elsif params[:tag]
-      @items = Item.tagged_with(params[:tag]).page(params[:page]).per(10)
+      @items = Item.tagged_with(params[:tag]).page(params[:page]).per(12)
     else
-      @items = Item.all.page(params[:page]).per(10)
+      @items = Item.all.page(params[:page]).per(12)
     end
   end
 

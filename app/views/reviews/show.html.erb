@@ -31,7 +31,7 @@
 		<%= form_for([@review.item, @review, @comment]) do |f| %>
 			<tr>
 				<td>
-					<%= f.text_field :content %>
+					<%= f.text_field :content, class: "comment-form" %>
 					<br>
 					<%= f.submit 'コメントする' %>
 				</td>
@@ -39,7 +39,7 @@
 		<% end %>
 	</table>
 	<td>
-		<%= link_to :back do %>
+		<%= link_to  item_path(@review.item) do %>
 			<button class="button">作品ページへ戻る</button>
 		<% end %>
 	</td>
