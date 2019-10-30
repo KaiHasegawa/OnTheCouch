@@ -28,7 +28,7 @@
         <li><a href="#">マイページ▼ </a>
           <ul class="sub">
             <li><%= link_to "マイページ", edit_end_user_path(current_end_user) %></li>
-            <li><%= link_to "タイムライン", end_user_path(current_end_user) %></li>
+            <!-- <li><%#= link_to "タイムライン", end_users_path(current_end_user) %></li> -->
             <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
           </ul>
         </li>
