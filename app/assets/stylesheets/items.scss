@@ -2,21 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.about-background{
-	background-image: url(/images/popcorn.jpg);
+.about-background{ 
+	background-image: image-url("/images/popcorn.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	width: 1410px;
-	height: 1200px;
+	width: 104vw;
 	background-size: cover;
 	background-position: center;
 	z-index: 1;
-	margin-left: -120px;
 	padding-top: 80px;
-
+    margin-left: -185px;
 }
 .about-top{
-	background-color: rgba(255,255,255,0.4);
+	background-color: rgba(255,255,255,0.9);
 	text-align: center;
 	margin: 0 auto;
     width: 800px;
@@ -37,9 +35,21 @@
 	font-family: 'Lato', sans-serif;
 	padding-top: 50px;
 	color: black;
+	font-size: 38px;
+	text-align: center;
 	font-weight: bold;
-
 }
+.box-head{
+	font-family: 'Lato', sans-serif;
+	padding-top: 50px;
+	color: black;
+	font-size: 38px;
+	text-align: center;
+	font-weight: bold;
+	border-bottom: solid 6px #87CEFA;
+	line-height: 1;
+}
+
 .top-comment{
 	font-family: 'Lato', sans-serif;
 	padding-top: 38px;
@@ -47,14 +57,51 @@
 	color: black;
 	font-weight: bold;
 }
+.top-box{
+	width: 1130px;
+	height: 580px;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 80px; 
 
+}
+.top-content{
+	width: 300px;
+	margin: 30px;
+	height: 380px;
+	display: inline-flex;
+}
+
+.content-title{
+	margin: 0 auto;
+	padding-left: 128px;
+	font-family: 'Rock Salt', cursive;
+	font-size: 30px;
+	
+}
+.li-box{
+	height: 70px;
+}
+.content-text{
+	padding-top: 10px;
+	word-break: break-all;
+	text-align: center;
+	font-size: 17px;
+	font-family: 'Kosugi Maru', sans-serif;
+
+}
+ul {
+  list-style: none;
+}
 .couch{
 	margin: 0 auto;
 	margin-top: 100px;
 	padding-bottom: 30px;
 	font-size:30px;
     font-weight: bold;
-
+}
+.empty{
+	height: 200px;
 }
 .wrap {
     -webkit-animation:buruburu 0.5s infinite linear alternate;
@@ -76,14 +123,11 @@
 
 .item-box{
   display: inline-flex;
-  margin: 50px;
-  padding: 10px;
-  background-color: rgba(255,255,255,0.4);
+  margin: 75px;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  box-shadow: 3px 5px 8px #808080;
-　font-family: 'Noto Sans JP', sans-serif;
+  box-shadow: 6px 8px 8px 4px #00000075;
   border-radius: 5px;
 }
 .container{
@@ -91,16 +135,26 @@
 	padding-left: 100px;
 	width: 100%;
 }
-.item-image{
-	width: 250px;
-  height:280px;
-}
 .item-column{
 	font-weight: bold;
 }
 .item-tag{
 	padding-right: 2px;
 }
-.item-contens{
+.item-content{
 	font-size: 13px;
+	word-wrap: break-word;
+	height: 100%;
+
+}
+.item-image{
+width: 230px;
+}
+.index-result{
+	height: 68px;
+	font-size: 17px;
+	background-color: #DDDDDD;
+	text-align: center;
+	margin-top: -51px;
+	padding-left: 10px;
 }

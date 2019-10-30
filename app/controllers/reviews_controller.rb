@@ -3,6 +3,7 @@ before_action :authenticate_end_user!, only: [:show, :create]
 
   def show
     @review = Review.find(params[:id])
+    @item = Item.find(params[:item_id])
     @comment = Comment.new
     @comments = @review.comments
   end
@@ -10,10 +11,16 @@ before_action :authenticate_end_user!, only: [:show, :create]
   def create
     @review = Review.new(review_params)
     @review.end_user = current_end_user
+    @item = Item.find(params[:item_id])
+    @reviews = @item.reviews
     @review.item_id = params[:item_id]
-    @review.save!
-    redirect_to item_path(@review.item_id,params[:item_id])
+    if @review.save
+        redirect_to item_path(@review.item_id,params[:item_id])
+    else
+        render "items/show"
+    end
   end
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy

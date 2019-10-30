@@ -1,12 +1,12 @@
-<h1>マイページ</h1>
+<h1><%= current_end_user.name %>さんのページ</h1>
 
 <table class=table >
   <tr>
   	<% if current_end_user.try(:admin?) %>
-      <p class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "管理画面へ", "/admin" %></p>
+      <p class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "●●●管理画面へ●●●", "/admin" %></p>
 	<% end %>
     <td width="40%">
-      	<%= attachment_image_tag @end_user, :end_user_image, :fill, 300, 300,fallback: "no_img_human.png", size:'300x300'%>
+      	<%= attachment_image_tag @end_user, :end_user_image, :fill, 300, 300,fallback: "no_img_human.png", size:'250x250', class: "my-image" %>
     </td>
     <td width="40%">
      <table >

@@ -12,7 +12,7 @@
       <table >
         <tr><h1 class="item-column"><%= @event.event_name %></h2></tr><br>
         <tr><h4 class="item-column">開催日時</h4>
-        	<p class="event-content"><%= @event.event_date.strftime("%-m月%-d日%H:%M") %></p></tr>
+        	<p class="event-content"> <%= @event.event_date.strftime("%-m月%-d日%H:%M") %>〜</p></tr>
         <br>
         <tr><h4 class="item-column">参加費</h4><p class="event-content">¥<%= @event.event_fee %></p></tr>
         <br>
@@ -26,10 +26,12 @@
 <div class="entry-box">
 	<h4 class="item-column">このイベントに参加する人</h4>
 	<div class="entry-button">
-		<% if !Entry.exists?(end_user_id:current_end_user.id, event_id: @event.id) %>
-			<%= link_to "参加したい！",entries_path(@event.id),method: :post %>
-		<% else %>
-			<%= link_to "やっぱりやめる",entry_path(@event.id),method: :delete %>
+		<% if end_user_signed_in?  %>
+			<% if !Entry.exists?(end_user_id:current_end_user.id, event_id: @event.id) %>
+				<%= link_to "参加したい！",entries_path(@event.id),method: :post %>
+			<% elsif %>
+				<%= link_to "やっぱりやめる",entry_path(@event.id),method: :delete %>
+			<% end %>
 		<% end %>
 	</div>
 		<% @favo_users.each do |user| %>

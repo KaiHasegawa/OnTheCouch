@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   }
 
   get 'tags/:tag', to: 'items#index', as: :tag  
-  resources :end_users
-
 
   resources :end_users
   resources :items do

@@ -5,7 +5,7 @@
       <%= csp_meta_tag %>
       <%= stylesheet_link_tag    'application', media: 'all'%>
       <%= javascript_include_tag 'application'%>
-      <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Noto+Sans+JP|Rock+Salt|Sawarabi+Mincho&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru|Lato|Montserrat|Noto+Sans+JP|Rock+Salt|Sawarabi+Mincho&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Oswald:700 rel="stylesheet">
 
 </head>
@@ -28,9 +28,8 @@
         <li><a href="#">マイページ▼ </a>
           <ul class="sub">
             <li><%= link_to "マイページ", edit_end_user_path(current_end_user) %></li>
-            <li><a href="#">タイムライン </a></li>
+            <li><%= link_to "タイムライン", end_user_path(current_end_user) %></li>
             <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
-            <li><a href="#"></a></li>
           </ul>
         </li>
       </ul>
@@ -82,13 +81,15 @@
 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-  <div class="empty-box"></div>
-    <div class="container-fluid">
+    <div class="empty-box"></div>
+     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-          <div class="back-ground">
-          <%= yield %>
-        </div>
+        <div class="back-ground">
+          <div class="col-md-offset-1 col-md-10">
+            <div class="back-color">
+              <%= yield %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

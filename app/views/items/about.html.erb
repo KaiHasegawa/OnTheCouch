@@ -12,20 +12,56 @@
 			観た人だけしか味わえない気持ちを分かち合いましょう！
 		</p>
 	</div>
-<%
-=begin
-%>
+
 	<div class="top-box">
-		<p class="top-head">On the Couchの楽しみ方</p>
+		<p class="box-head">On the Couchの楽しみ方</p>
 		<div class="top-content">
-		<p class="conten-title">01</p>
-		<img src="画像へのパス" width="100px" height="300px" alt="No image">
+			<ul>
+				<li class="li-box">
+					<strong class="content-title">01</strong>
+				</li>
+            	<li><%= image_tag "watch.png", size: "280x220" %></li>
+            	<li class="content-text">
+            		<b>感動を共有しよう。</b><br>
+            		<br>
+            		お腹を抱えて笑った映画も<br>
+            		涙した映画も<br>
+            		共有すればもっと<br>
+            		大好きになります！
+            	</li>
+       		</ul>
+		</div>
+		<div class="top-content">
+			<ul>
+				<li class="li-box">
+					<strong class="content-title">02</strong>
+				</li>
+        		<li><%= image_tag "people-2567915_640.jpg", size: "280x220" %></li>
+        		<li class="content-text">
+            		<b>レビューに対してコメントしよう。</b><br>
+            		<br>
+            		だれかのレビューに対してみんなで<br>
+            		リアクションをして<br>
+            		みんなで盛り上がろう！
+            	</li>
+		</div>
+		<div class="top-content">
+			<ul>
+				<li class="li-box">
+					<strong class="content-title">03</strong>
+				</li>
+        		<li><%= image_tag "cheer.jpg", size: "280x220" %></li>
+        		<li class="content-text">
+            		<b>OnTheCouchでは</b><br>
+            		<br>
+            		PoP Upイベントを開催しています。<br>
+            		メンバー同士でビールを片手に<br>
+            		お気に入りの映画を。
+            	</li>
 		</div>
 	</div>
-<%
-=end
-%>
-	<div class="couch">
+
+	<div class="couch-box">
 		<div class="wrap">
 	    <p class="couch">↓↓↓On the Couch!!↓↓↓</p>
 	    <%= link_to items_path do %>
@@ -33,4 +69,5 @@
 	    <% end %>
 		</div>
 	</div>
+
 </div>

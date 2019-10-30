@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
     if params[:q]
       render :index
     elsif params[:tag]
-      @items = Item.tagged_with(params[:tag])
+      @items = Item.tagged_with(params[:tag]).page(params[:page]).per(10)
     else
-      @items = Item.all
+      @items = Item.all.page(params[:page]).per(10)
     end
   end
 
@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name,:item_description, :release_date, :tag_list, :actor_list,:genre_list, :image, :review_id, :rate)
+      params.require(:item).permit(:name,:item_description, :release_date, :tag_list, :actor_list,:genre_list, :image, :review_id, :rate,)
     end
     def tag_params
       params.require(:tag).permit(:tag_list, :actor_list,:genre_list)
