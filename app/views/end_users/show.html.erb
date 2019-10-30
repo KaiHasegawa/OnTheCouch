@@ -27,11 +27,16 @@
 					</td>
 				</tr>
 			<% end %>
+			<td>
+				<div class="paginate-block">
+					<%= paginate @entries  %>
+				</div>
+			</td>
 		</td>
   </tr>
   <tr>
  	 <td><h2>マイレビュー</h2></td>
-   		 <td width="40%">
+   		<td width="40%">
 			<% @reviews.each do |r| %>
 				<tr>
 					<td>
@@ -51,7 +56,12 @@
 					</td>
 				</tr>
 			<% end %>
-		 </td>
+			<td>
+				<div class="paginate-block">
+					<%= paginate @reviews  %>
+				</div>
+			</td>
+		</td>
   </tr>
 </table>
 
