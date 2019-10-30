@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     elsif params[:tag]
       @items = Item.tagged_with(params[:tag]).page(params[:page]).per(9)
     else
-      @items = Item.all.page(params[:page]).per(12)
+      @items = Item.all.page(params[:page]).per(9)
     end
   end
 
