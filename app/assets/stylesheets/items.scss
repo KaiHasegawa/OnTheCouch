@@ -132,10 +132,10 @@ ul {
   box-shadow: 6px 8px 8px 4px #00000075;
   border-radius: 5px;
   word-wrap: break-word;
+  flex-wrap: wrap;
 }
 .container{
 	margin: 0 auto;
-	padding-left: 100px;
 	width: 100%;
 }
 .item-column{
@@ -151,7 +151,7 @@ ul {
 
 }
 .item-image{
-width: 230px;
+width: 210px;
 }
 .index-result{
 	height: 68px;

@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
   def set_search
     if params[:q].present?
       if params[:q][:name].present?
-      @items = Item.where("name LIKE ?", "%#{params[:q][:name_or_actors_name_or_tags_name_or_genres_name_cont]}%")
+      @items = Item.where("name LIKE ?", "%#{params[:q][:name_or_actors_name_or_tags_name_or_genres_name_cont]}%").page(params[:page]).per(9)
       else
-      @q = Item.page(params[:page]).per(10).ransack(params[:q])
+      @q = Item.page(params[:page]).per(9).ransack(params[:q])
       @items = @q.result(distinct: true)
       end
     end
-      @q = Item.page(params[:page]).per(10).ransack(params[:q])
-      @q_items = @q.result.page(params[:page]).per(10)
+      @q = Item.page(params[:page]).per(9).ransack(params[:q])
+      @q_items = @q.result.page(params[:page]).per(9)
   end
 
   def has_key?
