@@ -42,7 +42,6 @@ class EndUsersController < ApplicationController
      redirect_to edit_end_user_path(end_user.id)
   end
 
-  #お気に入り削除
 
   def unlike(event)
     entry = entries.find_by(event_id: event.id)
