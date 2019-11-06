@@ -1,0 +1,170 @@
+[33mcommit 0148c74ba9d53998a69677b854ff04b7f8d4fcbb[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Thu Oct 31 02:16:11 2019 +0000
+
+    発表
+
+[33mcommit 7f0f51a3024dc8eb47e44017c69df5a26aa5d390[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 30 12:30:32 2019 +0000
+
+    発表前2
+
+[33mcommit 8b24b2743e9a3112f5f0c6d4068d626883737dfa[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 30 12:12:43 2019 +0000
+
+    発表前2
+
+[33mcommit ec2fd9cb8ef3c822ac3c89d59498827e5ad673a2[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 30 11:54:38 2019 +0000
+
+    発表前
+
+[33mcommit e2573688b5405dfc552e9eceddce5c6903721ff7[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 30 10:25:12 2019 +0000
+
+    ほぼOK4
+
+[33mcommit 68eae5614fa3fa86520989ae4d2c45845970307d[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 30 19:22:30 2019 +0900
+
+    ほぼOK！3
+
+[33mcommit 04cec66d1fb059518f1206189c7567c67ed93996[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 30 18:41:27 2019 +0900
+
+    ほぼOK！2
+
+[33mcommit f5f94ad957d44cc7115dec29cf16f19825c8030d[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 30 18:07:31 2019 +0900
+
+    ほぼOK！
+
+[33mcommit d7dd9b69fcb4f29387fb55090ad7748929c172fd[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Sun Oct 27 11:24:48 2019 +0000
+
+    ターボリンクOFF
+
+[33mcommit 9fd333ee8f30536cb63391b252963e25f5734e33[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Sun Oct 27 08:26:02 2019 +0000
+
+    デプロイ中
+
+[33mcommit b06bdf2cc28851d4f57941f6b5e737384d3c81b1[m
+Author: KaiHasegawa <fromnowon0922@gmail.com>
+Date:   Sun Oct 27 08:00:35 2019 +0000
+
+    install mysql2 and edit puma.rb
+
+[33mcommit eebea08c89eeb77c173ff866a889f8d0920a4742[m
+Merge: 43bac4b ec770ad
+Author: KaiHasegawa <53547705+KaiHasegawa@users.noreply.github.com>
+Date:   Sat Oct 26 16:19:13 2019 +0900
+
+    Merge pull request #3 from KaiHasegawa/login
+    
+    Login
+
+[33mcommit ec770ad237c0214debc20a207d814471e67091a1[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Sat Oct 26 16:15:47 2019 +0900
+
+    install mysql2 and edit puma.rb
+
+[33mcommit f7a359e35bd6e711b975ac3a7e3c60abcac4c72b[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Sat Oct 26 12:54:59 2019 +0900
+
+    ログインフォーム
+
+[33mcommit 7cea86f3b0411dff10a12ab5d71a6e40613da477[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Thu Oct 24 20:05:44 2019 +0900
+
+    デプロイ前！
+
+[33mcommit 1f67d85240f945ca8198c3816e953fab44938a93[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Wed Oct 23 14:29:34 2019 +0900
+
+    raty blashup
+
+[33mcommit ce70e4d14e88e5ef294ba5b7eecbfbc4406b9cca[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Tue Oct 22 18:53:15 2019 +0900
+
+    Go To Buruburu
+
+[33mcommit 43bac4b95998c6a33acc3555f6b124897f0a0f7f[m
+Merge: 9136634 8076a53
+Author: KaiHasegawa <53547705+KaiHasegawa@users.noreply.github.com>
+Date:   Mon Oct 21 14:13:45 2019 +0900
+
+    Merge pull request #2 from KaiHasegawa/login
+    
+    マイページ導入
+
+[33mcommit 8076a530ab1f419e46c8de927e5c6e565ffaa7be[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Mon Oct 21 14:03:28 2019 +0900
+
+    マイページ導入
+
+[33mcommit 4e22c04a0aef2ce3f773958a2c75eab2e9d22839[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Sat Oct 19 19:19:59 2019 +0900
+
+    ヘッダー編集
+
+[33mcommit ce3ef2ea0c33e3f0b41b9ac5b8cae8ad7cb2f884[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Thu Oct 17 14:13:32 2019 +0900
+
+    ransack導入中
+
+[33mcommit 9136634f08fa97db4734c65284e49f85755612a2[m
+Merge: 91c05a6 d66f138
+Author: KaiHasegawa <53547705+KaiHasegawa@users.noreply.github.com>
+Date:   Tue Oct 15 17:48:53 2019 +0900
+
+    Merge pull request #1 from KaiHasegawa/login
+    
+    中間報告
+
+[33mcommit d66f1384d7e89b36edc9d3cc0a8749a70272ed5f[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Tue Oct 15 17:46:02 2019 +0900
+
+    レビュー機能完了
+
+[33mcommit 9f8df2cd1cc69ddacfa456cfca941192a1017584[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Mon Oct 14 14:15:31 2019 +0900
+
+    event page
+
+[33mcommit bd66224cffa2421e725fa5fa33e06c2cb74baad5[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Sun Oct 13 14:49:39 2019 +0900
+
+    RailsAdmin
+
+[33mcommit e39f3b215c80b020322dc49371720009aee18e3f[m
+Author: Kai Hasegawa <fromnowon0922@gmail.com>
+Date:   Thu Oct 3 18:25:54 2019 +0900
+
+    login done
+
+[33mcommit 91c05a619516bb197c0eed301b345a5bdec8bee8[m
+Author: KaiHasegawa <53547705+KaiHasegawa@users.noreply.github.com>
+Date:   Thu Oct 3 15:44:08 2019 +0900
+
+    Initial commit
