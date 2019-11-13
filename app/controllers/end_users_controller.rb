@@ -20,7 +20,7 @@ class EndUsersController < ApplicationController
   end
   def edit
     @end_user = EndUser.find(params[:id])
-    @reviews = @end_user.reviews.page(params[:page]).per(2)
+    @reviews = @end_user.reviews.page(params[:page]).per(5)
     @entries = @end_user.entries.page(params[:page]).per(3)
 
 
@@ -28,7 +28,7 @@ class EndUsersController < ApplicationController
 
 	def show
     @end_user = EndUser.find(params[:id])
-    @reviews = @end_user.reviews.page(params[:page]).per(2)
+    @reviews = @end_user.reviews.page(params[:page]).per(5)
     @entries = @end_user.entries.page(params[:page]).per(3)
 	end
 
