@@ -16,6 +16,11 @@ class EndUser < ApplicationRecord
       has_many :reviews, dependent: :destroy
       has_many :comments
 
+with_options presence: true do
+  validates :name
+  validates :email
+end
+
 
 	def email_required?
 		false

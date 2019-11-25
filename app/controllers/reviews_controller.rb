@@ -25,7 +25,7 @@ before_action :authenticate_end_user!, only: [:show, :create]
     @review = Review.find(params[:id])
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to items_url, notice: 'レビューが削除されました。' }
       format.json { head :no_content }
     end
   end

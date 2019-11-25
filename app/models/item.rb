@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 	acts_as_taggable_on :genres
 	acts_as_taggable
 	attachment :image
-	
+
 	has_many :reviews, foreign_key: 'item_id', dependent: :destroy
 
   def reviewed_by?(end_user)
