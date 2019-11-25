@@ -26,9 +26,11 @@
 					<% end %>
 				</td>
 				<td><%= c.content %></td>
+				
 			</tr>
 		<% end %>
 		<%= form_for([@review.item, @review, @comment]) do |f| %>
+			<%= render 'layouts/error_messages', model: f.object %>
 			<tr>
 				<td>
 					<%= f.text_field :content, class: "comment-form" %>
