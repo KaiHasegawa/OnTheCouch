@@ -67,6 +67,7 @@
 <% elsif end_user_signed_in? %>
   <h4>レビューを投稿する</h4>
   	<%= form_for([@item, @review]) do |f| %>
+        <div class="form-group row" id="star">
         <%= render 'layouts/error_messages', model: f.object %> <div
         class="form-group row" id="star">
           <td><%= f.hidden_field :rate, id: :review_star %></td>
