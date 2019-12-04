@@ -24,6 +24,12 @@
 	<%= f.label :event_image %><br>
   <%= f.file_field :event_image, class: 'form-control' %>
     
+
+
+<div class="field">
+  <%= f.label :place %>
+  <%= f.text_field :prace %>
+</div>
     <%= f.submit nil, class: 'btn btn-primary' %>
     <%= link_to 'Back', events_path %>
 
