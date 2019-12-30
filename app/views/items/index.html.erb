@@ -1,38 +1,40 @@
-<div class="index-head">
-  <h1>Movies</h1>
-</div>
+<div class="back-color">
+  <div class="index-head">
+    <h1>Movies</h1>
+  </div>
 
-    <% if params[:q] %>
-     <div class="index-result">
-      <%= params[:q][:name_or_actors_name_or_tags_name_or_genres_name_cont] %>に関する映画
-      <%= @items.length %> 件
-     </div>
-    <% end %>
+      <% if params[:q] %>
+       <div class="index-result">
+        <%= params[:q][:name_or_actors_name_or_tags_name_or_genres_name_cont] %>に関する映画
+        <%= @items.length %> 件
+       </div>
+      <% end %>
 
-    <% if params[:tag] %>
-      <div class="index-result">
-      <%= params[:tag] %>に関する映画
-      <%= @items.length %> 件
-     </div>
-    <% end %>
+      <% if params[:tag] %>
+        <div class="index-result">
+        <%= params[:tag] %>に関する映画
+        <%= @items.length %> 件
+       </div>
+      <% end %>
 
 
-<table>
-  <tr>
-    <td>
-      <div class="container">
-        <% @items.each do |item| %>
-          <div class="item-box">
-            <%= link_to item do %>
-              <%= attachment_image_tag item, :image, :fill, 1000, 1000,fallback: "no_images.png", size:'200x230'%><br>
-              <%= item.name %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </td>
-  </tr>
-</table>
-<div class="paginate_block">
-  <%= paginate @items  %>
+  <table>
+    <tr>
+      <td>
+        <div class="container">
+          <% @items.each do |item| %>
+            <div class="item-box">
+              <%= link_to item do %>
+                <%= attachment_image_tag item, :image, :fill, 1000, 1000,fallback: "no_images.png", size:'200x230'%><br>
+                <%= item.name %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="paginate_block">
+    <%= paginate @items  %>
+  </div>
 </div>

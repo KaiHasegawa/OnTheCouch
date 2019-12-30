@@ -1,167 +1,164 @@
-<table class=table >
-  <tr>
-    <td width="40%">
-      <%= attachment_image_tag @item, :image, :fill, 400, 400,fallback: "no_images.png", size:'400x400'%>
-    </td>
-    <td width="60%">
-      <table >
-        <tr><h1 class="item-column"><%= @item.name %></h2></tr><br>
-        <tr><h4 class="item-column">上映日</h4>
-        	<p class="item-content"><%= @item.release_date %></p></tr>
-        <br>
-        <tr><h4 class="item-column">監督名</h4>
-        	  <span style="background-color:#DDDDDD"><%= raw(@item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></span></tr>
-        <br>
-        <tr><h4 class="item-column">出演者</h4>
-        	 <span style="background-color:#DDDDDD"><%= raw(@item.actor_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></span></tr>
-        <br>
-        <tr><h4 class="item-column">ジャンル</h4>
-        	 <span style="background-color:#DDDDDD"><%= raw(@item.genre_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></span></tr>
-        <br>
-        <tr><h4 class="item-column">あらすじ</h4>
-        	<p class="item-content"><%= @item.item_description %></p></tr>
-        <tr></tr>
-      </table>
-    </td>
-  </tr>
-</table>
-　
-
-
-<% if end_user_signed_in? && @item.reviewed_by?(current_end_user) %>
-  <h2>レビュー一覧</h2>
-    <table class="table table-striped">
-     <tr>
-       <% @reviews.each do |r| %>
-       <tr>
-        <td>
-        <div class="review-box">
-           <div class="review-user">
-              <%= link_to r.end_user,class: "item-image" do %>
-                <%= attachment_image_tag r.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
-                <%= r.end_user.name %>
-              <% end %>
-           </div>
-           <%= r.body %>
-           <div id="star-rate-<%= r.id %>"></div>
-            <script>
-              $('#star-rate-<%= r.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                <% unless r.rate.blank? %>
-                  score: <%= r.rate %>,
-                <% end %>
-                });
-            </script>
-            <%= link_to 'コメントする', item_review_path(@item,r) %>
-        </div>
+<div class="back-color">
+  <table class=table >
+    <tr>
+      <td width="40%">
+        <%= attachment_image_tag @item, :image, :fill, 400, 400,fallback: "no_images.png", size:'400x400'%>
+      </td>
+      <td width="60%">
+        <table >
+          <tr><h1 class="item-column"><%= @item.name %></h2></tr><br>
+          <tr><h4 class="item-column">上映日</h4>
+          	<p class="item-content"><%= @item.release_date %></p></tr>
+          <br>
+          <tr><h4 class="item-column">監督名</h4>
+          	  <span style="background-color:#DDDDDD"><%= raw(@item.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></span></tr>
+          <br>
+          <tr><h4 class="item-column">出演者</h4>
+          	 <span style="background-color:#DDDDDD"><%= raw(@item.actor_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></span></tr>
+          <br>
+          <tr><h4 class="item-column">ジャンル</h4>
+          	 <span style="background-color:#DDDDDD"><%= raw(@item.genre_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></span></tr>
+          <br>
+          <tr><h4 class="item-column">あらすじ</h4>
+          	<p class="item-content"><%= @item.item_description %></p></tr>
+          <tr></tr>
+        </table>
       </td>
     </tr>
-      <% end %>
-    </tr>
   </table>
-<% elsif end_user_signed_in? %>
-  <h4>レビューを投稿する</h4>
-  	<%= form_for([@item, @review]) do |f| %>
-        <div class="form-group row" id="star">
-        <%= render 'layouts/error_messages', model: f.object %> <div
-        class="form-group row" id="star">
-          <td><%= f.hidden_field :rate, id: :review_star %></td>
-        </div>
-  		  <div class="review-form">
-          <%= f.text_area :body,size: '50x8' %>
-        </div>
-  		<br>
-  	    <td><%= f.submit 'レビューする' %></td>
-  	<% end %>
-	  <h2>レビュー一覧</h2>
-    <table class="table table-striped">
-     <tr>
-       <% @reviews.each do |r| %>
+  <% if end_user_signed_in? && @item.reviewed_by?(current_end_user) %>
+    <h2>レビュー一覧</h2>
+      <table class="table table-striped">
        <tr>
-        <td>
-        <div class="review-box">
-           <div class="review-user">
-              <%= link_to r.end_user,class: "item-image" do %>
-                <%= attachment_image_tag r.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
-                <%= r.end_user.name %>
-              <% end %>
-           </div>
-           <%= r.body %>
-           <div id="star-rate-<%= r.id %>"></div>
-            <script>
-              $('#star-rate-<%= r.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                <% unless r.rate.blank? %>
-                  score: <%= r.rate %>,
+         <% @reviews.each do |r| %>
+         <tr>
+          <td>
+          <div class="review-box">
+             <div class="review-user">
+                <%= link_to r.end_user,class: "item-image" do %>
+                  <%= attachment_image_tag r.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
+                  <%= r.end_user.name %>
                 <% end %>
-                });
-            </script>
-            <%= link_to 'コメントする', item_review_path(@item,r) %>
-        </div>
-      </td>
-    </tr>
-      <% end %>
-    </tr>
-  </table>
-<% else %>
-	 <h2>レビュー一覧</h2>
-    <table class="table table-striped">
-     <tr>
-       <% @reviews.each do |r| %>
+             </div>
+             <%= r.body %>
+             <div id="star-rate-<%= r.id %>"></div>
+              <script>
+                $('#star-rate-<%= r.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  <% unless r.rate.blank? %>
+                    score: <%= r.rate %>,
+                  <% end %>
+                  });
+              </script>
+              <%= link_to 'コメントする', item_review_path(@item,r) %>
+          </div>
+        </td>
+      </tr>
+        <% end %>
+      </tr>
+    </table>
+  <% elsif end_user_signed_in? %>
+    <h4>レビューを投稿する</h4>
+    	<%= form_for([@item, @review]) do |f| %>
+          <div class="form-group row" id="star">
+           <%= render 'layouts/error_messages', model: f.object %>
+          </div>
+          <div class="form-group row" id="star">
+            <td><%= f.hidden_field :rate, id: :review_star %></td>
+          </div>
+    		  <div class="review-form">
+            <%= f.text_area :body,size: '50x8' %>
+          </div>
+    		<br>
+    	    <td><%= f.submit 'レビューする' %></td>
+    	<% end %>
+  	  <h2>レビュー一覧</h2>
+      <table class="table table-striped">
        <tr>
-        <td>
-        <div class="review-box">
-           <div class="review-user">
-              <%= link_to r.end_user,class: "item-image" do %>
-                <%= attachment_image_tag r.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
-                <%= r.end_user.name %>
-              <% end %>
-           </div>
-           <%= r.body %>
-           <div id="star-rate-<%= r.id %>"></div>
-            <script>
-              $('#star-rate-<%= r.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                <% unless r.rate.blank? %>
-                  score: <%= r.rate %>,
+         <% @reviews.each do |r| %>
+         <tr>
+          <td>
+          <div class="review-box">
+             <div class="review-user">
+                <%= link_to r.end_user,class: "item-image" do %>
+                  <%= attachment_image_tag r.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
+                  <%= r.end_user.name %>
                 <% end %>
-                });
-            </script>
-        </div>
-      </td>
-    </tr>
-      <% end %>
-    </tr>
-  </table>
-<% end %>
-
-
-	<script>
-		$(function(){
-		  $('#star').raty({
-		  	number: 5,
-		    size     : 36,
-		    starOff:  '<%= asset_path('star-off.png') %>',
-		    starOn : '<%= asset_path('star-on.png') %>',
-		    starHalf: '<%= asset_path('star-half.png') %>',
-		    scoreName: 'review[rate]',
-		    half: true,
-		  });
-		 });
-　　</script>
-
+             </div>
+             <%= r.body %>
+             <div id="star-rate-<%= r.id %>"></div>
+              <script>
+                $('#star-rate-<%= r.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  <% unless r.rate.blank? %>
+                    score: <%= r.rate %>,
+                  <% end %>
+                  });
+              </script>
+              <%= link_to 'コメントする', item_review_path(@item,r) %>
+          </div>
+        </td>
+      </tr>
+        <% end %>
+      </tr>
+    </table>
+  <% else %>
+   <h2>レビュー一覧</h2>
+    <table class="table table-striped">
+      <tr>
+        <% @reviews.each do |r| %>
+         <tr>
+          <td>
+            <div class="review-box">
+             <div class="review-user">
+                <%= link_to r.end_user,class: "item-image" do %>
+                  <%= attachment_image_tag r.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
+                  <%= r.end_user.name %>
+                <% end %>
+             </div>
+             <%= r.body %>
+             <div id="star-rate-<%= r.id %>"></div>
+              <script>
+                $('#star-rate-<%= r.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  <% unless r.rate.blank? %>
+                    score: <%= r.rate %>,
+                  <% end %>
+                  });
+              </script>
+             </div>
+          </td>
+         </tr>
+        <% end %>
+      </tr>
+    </table>
+  <% end %>
+  <script>
+    $(function(){
+    $('#star').raty({
+    number: 5,
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+    });
+    });
+  </script>
+</div>
