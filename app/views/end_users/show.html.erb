@@ -1,70 +1,71 @@
-<h1><%= @end_user.name %>さんのページ</h1>
-<table class=table >
-  <tr>
-    <td width="40%">
-      	<%= attachment_image_tag @end_user, :end_user_image, :fill, 300, 300,fallback: "no_img_human.png", size:'300x300'%>
-    </td>
-    <td width="40%">
-      <table >
-		<div class="form-group">
-			<h3><%= @end_user.name %></h3>
-        <tr></tr>
-        <td width="20%"><tr></tr></td>
-      </table>
-    </td>
-  </tr>
+<div class="back-color">
+	<h1><%= @end_user.name %>さんのページ</h1>
+	<table class=table >
+	  <tr>
+	    <td width="40%">
+	      	<%= attachment_image_tag @end_user, :end_user_image, :fill, 300, 300,fallback: "no_img_human.png", size:'300x300'%>
+	    </td>
+	    <td width="40%">
+	      <table >
+			<div class="form-group">
+				<h3><%= @end_user.name %></h3>
+	        <tr></tr>
+	        <td width="20%"><tr></tr></td>
+	      </table>
+	    </td>
+	  </tr>
 
-  <tr>
-  	<td><h2>参加予定のイベント</h2></td>
-    	<td width="40%">
-			<% @entries.each do |e| %>
-				<tr>
-					<td>
-						<%= link_to event_path(e.event) do %>
-							<%= attachment_image_tag e.event, :event_image, :fill, 500, 500,fallback: "no.png", size:'200x230'%><br>
-							<%= e.event.event_name %>
-						<% end %>
-					</td>
-				</tr>
-			<% end %>
-			<td>
-				<div class="paginate-block">
-					<%= paginate @entries  %>
-				</div>
-			</td>
-		</td>
-  </tr>
-  <tr>
- 	 <td><h2>マイレビュー</h2></td>
-   		<td width="40%">
-			<% @reviews.each do |r| %>
-				<tr>
-					<td>
-						<div class="item-review">
-							<%= link_to item_path(r.item) do %>
-								<%= attachment_image_tag r.item, :image, :fill, 500, 500,fallback: "no_images.png", size:'200x230'%><br>
-								<h3><%= r.item.name %></h3>
+	  <tr>
+	  	<td><h2>参加予定のイベント</h2></td>
+	    	<td width="40%">
+				<% @entries.each do |e| %>
+					<tr>
+						<td>
+							<%= link_to event_path(e.event) do %>
+								<%= attachment_image_tag e.event, :event_image, :fill, 500, 500,fallback: "no.png", size:'200x230'%><br>
+								<%= e.event.event_name %>
 							<% end %>
-						</div>
-					<td>
-						<div class="item-body">
-							<%= r.body %>
-							<br>
-							<br>
-							<span style="background-color:#DDDDDD"><%= link_to '▶︎レビューページへ', item_review_path(r.item)  %></span>
-						</div>
-					</td>
-				</tr>
-			<% end %>
-			<td>
-				<div class="paginate-block">
-					<%= paginate @reviews  %>
-				</div>
+						</td>
+					</tr>
+				<% end %>
+				<td>
+					<div class="paginate-block">
+						<%= paginate @entries  %>
+					</div>
+				</td>
 			</td>
-		</td>
-  </tr>
-</table>
-
+	  </tr>
+	  <tr>
+	 	 <td><h2>マイレビュー</h2></td>
+	   		<td width="40%">
+				<% @reviews.each do |r| %>
+					<tr>
+						<td>
+							<div class="item-review">
+								<%= link_to item_path(r.item) do %>
+									<%= attachment_image_tag r.item, :image, :fill, 500, 500,fallback: "no_images.png", size:'200x230'%><br>
+									<h3><%= r.item.name %></h3>
+								<% end %>
+							</div>
+						<td>
+							<div class="item-body">
+								<%= r.body %>
+								<br>
+								<br>
+								<span style="background-color:#DDDDDD"><%= link_to '▶︎レビューページへ', item_review_path(r.item)  %></span>
+							</div>
+						</td>
+					</tr>
+				<% end %>
+				<td>
+					<div class="paginate-block">
+						<%= paginate @reviews  %>
+					</div>
+				</td>
+			</td>
+	  </tr>
+	</table>
+</div>
 
 
 
