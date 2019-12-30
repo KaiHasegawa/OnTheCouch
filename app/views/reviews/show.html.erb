@@ -1,49 +1,51 @@
-<h1>コメントページ</h1>
-<p><%= @review.end_user.name %>さんのレビューに対して共感したらコメントしよう！</p>
-<table class="table table-striped">
-	<tr>
-		<td>
-			<%= link_to @review.end_user,class: "item-image" do %>
-            <%= attachment_image_tag @review.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
-            <%= @review.end_user.name %>
-         	 <% end %>
-        </td>
-		<td><%= @review.body %></td>
-		<br>
-		<td><% if end_user_signed_in? && @review.end_user_id == current_end_user.id %>
-    		<%= link_to "レビューを削除する",item_review_path(@item.id,@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-		</td><% end %>
-	</tr>
-</table>
-<div class="comments">
+<div class="back-color">
+	<h1>コメントページ</h1>
+	<p><%= @review.end_user.name %>さんのレビューに対して共感したらコメントしよう！</p>
 	<table class="table table-striped">
-		<% @comments.each do |c| %>
-			<tr>
-				<td>
-					<%= link_to c.end_user,class: "item-image" do %>
-						<%= attachment_image_tag c.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
-						<%= c.end_user.name %>
-					<% end %>
-				</td>
-				<td><%= c.content %></td>
-				
-			</tr>
-		<% end %>
-		<%= form_for([@review.item, @review, @comment]) do |f| %>
-			<%= render 'layouts/error_messages', model: f.object %>
-			<tr>
-				<td>
-					<%= f.text_field :content, class: "comment-form" %>
-					<br>
-					<%= f.submit 'コメントする' %>
-				</td>
-			</tr>
-		<% end %>
+		<tr>
+			<td>
+				<%= link_to @review.end_user,class: "item-image" do %>
+	            <%= attachment_image_tag @review.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
+	            <%= @review.end_user.name %>
+	         	 <% end %>
+	        </td>
+			<td><%= @review.body %></td>
+			<br>
+			<td><% if end_user_signed_in? && @review.end_user_id == current_end_user.id %>
+	    		<%= link_to "レビューを削除する",item_review_path(@item.id,@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+			</td><% end %>
+		</tr>
 	</table>
-	<td>
-		<%= link_to  item_path(@review.item) do %>
-			<button class="button">作品ページへ戻る</button>
-		<% end %>
-	</td>
+	<div class="comments">
+		<table class="table table-striped">
+			<% @comments.each do |c| %>
+				<tr>
+					<td>
+						<%= link_to c.end_user,class: "item-image" do %>
+							<%= attachment_image_tag c.end_user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "review-image" %>
+							<%= c.end_user.name %>
+						<% end %>
+					</td>
+					<td><%= c.content %></td>
+					
+				</tr>
+			<% end %>
+			<%= form_for([@review.item, @review, @comment]) do |f| %>
+				<%= render 'layouts/error_messages', model: f.object %>
+				<tr>
+					<td>
+						<%= f.text_field :content, class: "comment-form" %>
+						<br>
+						<%= f.submit 'コメントする' %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+		<td>
+			<%= link_to  item_path(@review.item) do %>
+				<button class="button">作品ページへ戻る</button>
+			<% end %>
+		</td>
+	</div>
 </div>
 
