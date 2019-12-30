@@ -19,39 +19,28 @@
 
 
 body{
-	margin-top: -80px; /* 固定ナビの高さ分のネガティブマージン */
+	margin-top: -80px; 
 	padding-top: 50px;
   font-family: 'Lato', sans-serif;
   font-family: 'Kosugi Maru', sans-serif;
   background-image: url(leather-2914748dc64ee6e3c8d500836311eb0be241f88bdd9b7dd6c60a23b184de1bf1.jpg);
   width: 100%;
   background-size: cover;
-
 }
-/*.back-ground{
-  width: 105vw;
-  min-height: 100vw;
-
-}*/
 .back-color{
   background-color: white;
-      padding: 25px;
-
+  padding: 25px;
 }
-
 .empty-box{
-	margin-top: 58px; /* 固定ナビの高さ分のネガティブマージン */
-  z-index: -999;
+	margin-top: 58px; 
 }
 .site-header{
     margin-top: 30px;
     background: #000000 ;
-    /*padding: 60px 20px;*/
     position: fixed;
     justify-content: space-between;
     width: 100%;
     clear: left;
-    height: 70px;
     z-index: 999;
 }
 .site-logo{
@@ -70,7 +59,6 @@ body{
     color: #333;
     text-decoration: none;
 }
-
 .content{
     line-height: 1.6;
     margin: 0 auto;
@@ -85,7 +73,7 @@ body{
     padding: 80px 0;
     position: relative;
     width: 105vw;
-        margin-left: -15px;
+    margin-left: -15px;
 
 }
 .copyright{
@@ -114,10 +102,8 @@ body{
 .menu_style{
     position: right;
     margin-right: 160px;
-    width: 300px;
     float:right;
     clear: right;
-    height: 70px;
 }
 ul.menu {
 
@@ -125,11 +111,11 @@ ul.menu {
   margin: 0;
 }
 ul.menu li {
-  float: left;  /*メインメニューは横並びに*/
+  float: left;
   width: 150px;
   height: 70px;
   background-color: #2F4B97;
-  position: relative;  /*子要素の基準とするために指定*/
+  position: relative;
   list-style-type: none;
   box-sizing:border-box;
 }
@@ -225,7 +211,7 @@ ul.menu:after {
 }
 .form-body{
     margin: 100px;
-    padding-top: 200px;
+    padding-top: 130px;
 }
 
 h2{
@@ -238,14 +224,6 @@ h3{
 .my-image{
   border-radius: 10px;
 }
-/*.registration-image{
-  background-image: url("/images/160362.png");
-  width: 95%;
-  height: 65%;
-  background-size: contain;
-  background-position: center;
-  margin-top: -138px;
-}*/
 .paginate-block{
   width: 100%;
   text-align: center;
@@ -254,4 +232,70 @@ h3{
 .comment-form{
       width: 250px;
     height: 55px;
+}
+@media screen and (max-width:1024px) {  
+  body{
+    width:100%;
+  }
+}
+@media screen and (max-width:768px) {  
+  body{
+    width:100%;
+  }
+}
+@media screen and (max-width:375px) {
+  body{
+    width: auto;
+    float: none;
+  }
+  .site-header{
+    width: auto;
+    float: none;
+  }
+  .site-footer{
+    position: absolute;
+    bottom: 0; 
+  }
+  .about-top{
+    width: auto;
+    float: none;
+  }
+  .about-background{
+    width: 133vw;
+    padding-left: 121px;
+    height: 130vh;
+  }
+  .top-box{
+    width: auto;
+    float: none;
+  }
+  .box-head{
+    width: auto;
+    float: none;
+  }
+  .top-logo{
+    font-size: 33px;
+  }
+  .site-logo{
+    margin-left: 0;
+  }
+  .menu_style{
+    margin-right: 120px;
+  }
+  .search{
+    font-size: 10px;
+    height: 55px;
+    padding-top: 14px;
+  }
+  .search-texxt{
+    margin-left: 10px;
+  }
+  .top-head{
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  .top-content{
+    width: auto;
+    float: none;
+  }
 }

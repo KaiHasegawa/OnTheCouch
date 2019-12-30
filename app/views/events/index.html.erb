@@ -1,23 +1,23 @@
-<div class="index-head">
-  <h1>PoP Up Events</h1>
+<div class="back-color">
+  <div class="index-head">
+    <h1>PoP Up Events</h1>
+  </div>
+  <table>
+    <tr>
+      <td>
+        <div class="container">
+          <% @events.each do |event| %>
+            <div class="item-box">
+              <%= link_to event,class: "item-image" do %>
+                <%= attachment_image_tag event, :event_image, :fill, 1000, 1000,fallback: "no.png", size:'180x210'%><br>
+                <br>
+                <%= event.event_name %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
-
-
-<table>
-  <tr>
-    <td>
-      <div class="container">
-        <% @events.each do |event| %>
-          <div class="item-box">
-            <%= link_to event,class: "item-image" do %>
-              <%= attachment_image_tag event, :event_image, :fill, 1000, 1000,fallback: "no.png", size:'180x210'%><br>
-              <br>
-              <%= event.event_name %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </td>
-  </tr>
-</table>
 

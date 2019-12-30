@@ -1,102 +1,100 @@
+<div class="back-color">
+  <table class=table >
+    <tr>
+      <td width="40%">
+        <%= attachment_image_tag @event, :event_image, :fill, 500, 500,fallback: "no.png", size:'500x500'%>
+
+      </td>
+      <td width="60%">
+        <table >
+          <tr><h1 class="item-column"><%= @event.event_name %></h2></tr><br>
+          <tr><h4 class="item-column">開催日時</h4>
+          	<p class="event-content"> <%= @event.event_date.strftime("%-m月%-d日%H:%M") %>〜</p></tr>
+          <br>
+          <tr><h4 class="item-column">参加費</h4><p class="event-content">¥<%= @event.event_fee %></p></tr>
+          <br>
+                	<p class="item-content"><%= @event.event_description %></p></tr>
+          <tr></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <div class="entry-box">
+  	<h4 class="item-column">このイベントに参加する人</h4>
+  	<div class="entry-button">
+  		<% if end_user_signed_in?  %>
+  			<% if !Entry.exists?(end_user_id:current_end_user.id, event_id: @event.id) %>
+  				<%= link_to "参加したい！",entries_path(@event.id),method: :post %>
+  			<% elsif %>
+  				<%= link_to "やっぱりやめる",entry_path(@event.id),method: :delete %>
+  			<% end %>
+  		<% end %>
+  	</div>
+  		<% @favo_users.each do |user| %>
+  		<div class="entry-image">
+  				<%= attachment_image_tag user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "entry-image" %>
+  				<br><br>
+  		</div>
+  		<div class="entry-user">
+  			<%= user.name %>
+  		</div>
+  		<% end %>
+  </div>
 
 
+      <h2>開催地：<%= @event.prace %></h2>
 
+  <div id='map'>
+  </div>
 
-<table class=table >
-  <tr>
-    <td width="40%">
-      <%= attachment_image_tag @event, :event_image, :fill, 500, 500,fallback: "no.png", size:'500x500'%>
-
-    </td>
-    <td width="60%">
-      <table >
-        <tr><h1 class="item-column"><%= @event.event_name %></h2></tr><br>
-        <tr><h4 class="item-column">開催日時</h4>
-        	<p class="event-content"> <%= @event.event_date.strftime("%-m月%-d日%H:%M") %>〜</p></tr>
-        <br>
-        <tr><h4 class="item-column">参加費</h4><p class="event-content">¥<%= @event.event_fee %></p></tr>
-        <br>
-              	<p class="item-content"><%= @event.event_description %></p></tr>
-        <tr></tr>
-      </table>
-    </td>
-  </tr>
-</table>
-
-<div class="entry-box">
-	<h4 class="item-column">このイベントに参加する人</h4>
-	<div class="entry-button">
-		<% if end_user_signed_in?  %>
-			<% if !Entry.exists?(end_user_id:current_end_user.id, event_id: @event.id) %>
-				<%= link_to "参加したい！",entries_path(@event.id),method: :post %>
-			<% elsif %>
-				<%= link_to "やっぱりやめる",entry_path(@event.id),method: :delete %>
-			<% end %>
-		<% end %>
-	</div>
-		<% @favo_users.each do |user| %>
-		<div class="entry-image">
-				<%= attachment_image_tag user, :end_user_image, :fill, 100, 100,fallback: "no_img_human.png", size:'80x80',class: "entry-image" %>
-				<br><br>
-		</div>
-		<div class="entry-user">
-			<%= user.name %>
-		</div>
-		<% end %>
-</div>
-
-
-    <h2>開催地：<%= @event.prace %></h2>
-
-<div id='map'>
-</div>
-
-<style>
-  #map{
-    height: 400px;
-  }
-</style>
-
-<script>
-/*
-mapを関数の外で定義(codeAddressでも使うため)
-geocoderを用意
-*/
-
-let map
-let geocoder
-
-function initMap(){
-  // geocoderを初期化
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: -34.397, lng: 150.644},
-  zoom: 15
-  });
-
-        codeAddress();
-}
-
-function codeAddress(){
-  // 入力を取得
-  let inputAddress = "<%= @event.prace %>"
-
-  // geocodingしたあとmapを移動
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-　　　　　　　　　　　　// map.setCenterで地図が移動
-      map.setCenter(results[0].geometry.location);
-
-　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
+  <style>
+    #map{
+      height: 400px;
     }
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3Uop3XUg9f1viRfMT7KwgyVTEvuh5WSg&callback=initMap" async defer></script>
+  </style>
+
+  <script>
+  /*
+  mapを関数の外で定義(codeAddressでも使うため)
+  geocoderを用意
+  */
+
+  let map
+  let geocoder
+
+  function initMap(){
+    // geocoderを初期化
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 15
+    });
+
+          codeAddress();
+  }
+
+  function codeAddress(){
+    // 入力を取得
+    let inputAddress = "<%= @event.prace %>"
+
+    // geocodingしたあとmapを移動
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+  　　　　　　　　　　　　// map.setCenterで地図が移動
+        map.setCenter(results[0].geometry.location);
+
+  　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3Uop3XUg9f1viRfMT7KwgyVTEvuh5WSg&callback=initMap" async defer></script>
+</div>
