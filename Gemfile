@@ -78,7 +78,7 @@ gem 'jquery-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'momentjs-rails', '>= 2.9.0'
 
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 1.4'
 gem 'cancancan', '~> 2.0'
 
 gem 'jquery-ui-rails'
